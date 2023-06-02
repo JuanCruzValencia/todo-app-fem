@@ -1,7 +1,12 @@
+import Form from "./components/form/Form";
+import Layout from "./components/layout/Layout";
+
 function App() {
   return (
     <>
-      <p>Hello TODO - APP</p>
+      <Layout>
+        <Form />
+      </Layout>
     </>
   );
 }
