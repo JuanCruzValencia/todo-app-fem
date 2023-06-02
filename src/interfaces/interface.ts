@@ -3,3 +3,7 @@ export interface ITodoList {
   content: string;
   completed: boolean;
 }
+
+export interface IFormField {
+  content?: string;
+}

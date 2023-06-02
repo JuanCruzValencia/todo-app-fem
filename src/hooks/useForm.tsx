@@ -1,16 +1,13 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-
-interface FormField {
-  content?: string;
-}
+import { IFormField } from "../interfaces/interface";
 
 type FormProps = {
-  initialValue: FormField;
+  initialValue: IFormField;
 };
 
 const useForm = ({ initialValue }: FormProps) => {
-  const [form, setForm] = useState<FormField>({ ...initialValue });
-  const [errors, setErrors] = useState<FormField>({});
+  const [form, setForm] = useState<IFormField>({ ...initialValue });
+  const [errors, setErrors] = useState<IFormField>({});
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -26,7 +23,7 @@ const useForm = ({ initialValue }: FormProps) => {
   const handleSubmmit = (e: FormEvent<HTMLInputElement>) => {
     e.preventDefault();
 
-    const newError: FormField = {};
+    const newError: IFormField = {};
 
     if (form.content?.trim() === "") {
       newError.content = "New note cant be empty";

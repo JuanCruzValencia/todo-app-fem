@@ -9,6 +9,7 @@ const Form: React.FC = () => {
         placeholder="new note"
         required={true}
         error="error"
+        className=""
       />
     </form>
   );
