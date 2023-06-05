@@ -1,5 +1,6 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useContext, useState } from "react";
 import { IFormField } from "../interfaces/interface";
+import { TodoContext } from "../context/todo.context";
 
 type FormProps = {
   initialValue: IFormField;
@@ -8,6 +9,7 @@ type FormProps = {
 const useForm = ({ initialValue }: FormProps) => {
   const [form, setForm] = useState<IFormField>({ ...initialValue });
   const [errors, setErrors] = useState<IFormField>({});
+  const { addTodo } = useContext(TodoContext);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -20,18 +22,18 @@ const useForm = ({ initialValue }: FormProps) => {
     });
   };
 
-  const handleSubmmit = (e: FormEvent<HTMLInputElement>) => {
+  const handleSubmmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const newError: IFormField = {};
 
-    if (form.content?.trim() === "") {
-      newError.content = "New note cant be empty";
+    if (form.todo?.trim() === "") {
+      newError.todo = "New note cant be empty";
     }
 
     setErrors(newError);
 
-    console.log(form);
+    addTodo(form.todo);
   };
 
   return {

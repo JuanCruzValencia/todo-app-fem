@@ -1,24 +1,19 @@
-import { useEffect, useState } from "react";
-import { ITodoList } from "../../interfaces/interface";
-import { listRequest } from "../../api/request";
+import { useContext } from "react";
 import ListItem from "./ListItem";
+import { TodoContext } from "../../context/todo.context";
+import Loading from "../common/Loading";
 
 const ListFlexContainer: React.FC = () => {
-  const [list, setList] = useState<ITodoList[]>([]);
+  const { todos, isLoading } = useContext(TodoContext);
 
-  useEffect(() => {
-    const fetchList = async () => {
-      const resolve = await listRequest();
-      setList(resolve);
-    };
-    fetchList();
-  }, []);
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <>
-      <div>{JSON.stringify(list)}</div>
-      {list.map((item) => {
-        return <ListItem item={item} key={item.id} />;
+      {todos.map((todo) => {
+        return <ListItem todo={todo} key={todo.id} />;
       })}
     </>
   );

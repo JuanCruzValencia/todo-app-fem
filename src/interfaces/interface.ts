@@ -1,9 +1,17 @@
-export interface ITodoList {
-  id: string;
+export interface ITodo {
+  id: number;
   content: string;
   completed: boolean;
 }
 
 export interface IFormField {
-  content?: string;
+  todo?: string;
+}
+
+export interface ITodoContextProps {
+  todos: ITodo[];
+  isLoading: boolean;
+  addTodo: (todo?: string) => void;
+  deleteTodo: (id: number) => void;
+  completeTodo: (id: number) => void;
 }

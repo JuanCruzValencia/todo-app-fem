@@ -1,15 +1,22 @@
+import useForm from "../../hooks/useForm";
 import Input from "../common/Input";
 
 const Form: React.FC = () => {
+  const initialValue = {
+    todo: "",
+  };
+  const { errors, handleChange, handleSubmmit } = useForm({ initialValue });
+
   return (
-    <form action="">
+    <form onSubmit={handleSubmmit}>
       <Input
         type="string"
-        name="note"
-        placeholder="new note"
+        name="todo"
+        placeholder="Create new todo..."
         required={true}
-        error="error"
+        error={errors}
         className=""
+        handleChange={handleChange}
       />
     </form>
   );
