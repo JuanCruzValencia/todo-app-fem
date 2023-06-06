@@ -1,15 +1,11 @@
-import { useContext } from "react";
 import ListItem from "./ListItem";
-import { TodoContext } from "../../context/todo.context";
-import Loading from "../common/Loading";
+import { ITodo } from "../../interfaces/interface";
 
-const ListFlexContainer: React.FC = () => {
-  const { todos, isLoading } = useContext(TodoContext);
+type Props = {
+  todos: ITodo[];
+};
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
+const ListFlexContainer: React.FC<Props> = ({ todos }) => {
   return (
     <>
       {todos.map((todo) => {

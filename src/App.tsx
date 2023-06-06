@@ -1,6 +1,5 @@
-import Form from "./components/form/Form";
 import Layout from "./components/layout/Layout";
-import ListFlexContainer from "./components/list/ListFlexContainer";
+import MainContainer from "./components/main/MainContainer";
 import { ThemeContextProvider } from "./context/theme.context";
 import { TodoContextProvider } from "./context/todo.context";
 
@@ -10,8 +9,7 @@ function App() {
       <ThemeContextProvider>
         <TodoContextProvider>
           <Layout>
-            <Form />
-            <ListFlexContainer />
+            <MainContainer />
           </Layout>
         </TodoContextProvider>
       </ThemeContextProvider>

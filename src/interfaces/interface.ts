@@ -9,8 +9,10 @@ export interface IFormField {
 }
 
 export interface ITodoContextProps {
-  todos: ITodo[];
+  filteredTodos: ITodo[];
   isLoading: boolean;
+  filter: FILTER;
+  handleFilter: (filter: FILTER) => void;
   addTodo: (todo?: string) => void;
   deleteTodo: (id: number) => void;
   completeTodo: (id: number) => void;

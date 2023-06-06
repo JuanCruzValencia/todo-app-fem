@@ -11,13 +11,19 @@ const TodoFilter: React.FC<Props> = ({ current, onChange }) => {
   return (
     <>
       {filters.map((filter) => {
-        <div
-          key={filter}
-          onClick={() => onChange(filter)}
-          className={current === filter ? "" : ""}
-        >
-          {filter}
-        </div>;
+        return (
+          <div
+            key={filter}
+            onClick={() => onChange(filter)}
+            className={
+              current === filter
+                ? "text-CheckOne cursor-pointer"
+                : "text-CheckTwo cursor-pointer"
+            }
+          >
+            {filter}
+          </div>
+        );
       })}
     </>
   );

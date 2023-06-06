@@ -5,7 +5,7 @@ type Props = {
 const ItemCounter: React.FC<Props> = ({ count }) => {
   return (
     <div>
-      <span>`${count} items left`</span>
+      <span>{count} items left</span>
     </div>
   );
 };

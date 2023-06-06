@@ -16,7 +16,11 @@ const ListItem: React.FC<Props> = ({ todo }) => {
       <IconCheck completed={todo.completed} />
       <p
         onClick={() => completeTodo(todo.id)}
-        className={todo.completed ? "text-LGray line-through" : ""}
+        className={
+          todo.completed
+            ? "text-LGray line-through cursor-pointer"
+            : "cursor-pointer"
+        }
       >
         {todo.content}
       </p>

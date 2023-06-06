@@ -1,5 +1,5 @@
-import { createContext, useEffect, useState } from "react";
-import { ITodo, ITodoContextProps } from "../interfaces/interface";
+import { createContext, useEffect, useMemo, useState } from "react";
+import { FILTER, ITodo, ITodoContextProps } from "../interfaces/interface";
 import { listRequest } from "../api/request";
 
 type Props = {
@@ -10,6 +10,7 @@ export const TodoContext = createContext({} as ITodoContextProps);
 
 export const TodoContextProvider: React.FC<Props> = ({ children }) => {
   const [todos, setTodos] = useState<ITodo[]>([]);
+  const [filter, setFilter] = useState<FILTER>(FILTER.ALL);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -20,6 +21,23 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
     };
     fetchList();
   }, []);
+
+  const filteredTodos = useMemo(() => {
+    const todosCopy = [...todos];
+
+    switch (filter) {
+      case FILTER.ACTIVE:
+        return todosCopy.filter((todo) => todo.completed === false);
+      case FILTER.COMPLETED:
+        return todosCopy.filter((todo) => todo.completed === true);
+      default:
+        return todosCopy;
+    }
+  }, [todos, filter]);
+
+  const handleFilter = (filter: FILTER) => {
+    setFilter(filter);
+  };
 
   const addTodo = (todo?: string) => {
     if (todo) {
@@ -67,7 +85,16 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
     });
   };
 
-  const data = { todos, isLoading, addTodo, deleteTodo, completeTodo, deleteCompleted };
+  const data = {
+    filteredTodos,
+    isLoading,
+    filter,
+    handleFilter,
+    addTodo,
+    deleteTodo,
+    completeTodo,
+    deleteCompleted,
+  };
 
   return <TodoContext.Provider value={data}>{children}</TodoContext.Provider>;
 };
