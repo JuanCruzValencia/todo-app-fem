@@ -44,7 +44,7 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
       setTodos(filterTodos);
     }
 
-    throw new Error("Todo not found");
+    // throw new Error("Todo not found");
   };
 
   const completeTodo = (id: number) => {

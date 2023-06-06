@@ -5,7 +5,8 @@ export default {
     colors: {
       //primary
       BBlue: "#0077FF",
-      Check: "linear-gradient #3291FF to #EF4DB6",
+      CheckOne: "#3291FF",
+      CheckTwo: "#EF4DB6",
       //light
       LGray: "#FAFAFA",
       VLGrayBlue: "#EDEFF6",
