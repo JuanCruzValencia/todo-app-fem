@@ -14,4 +14,16 @@ export interface ITodoContextProps {
   addTodo: (todo?: string) => void;
   deleteTodo: (id: number) => void;
   completeTodo: (id: number) => void;
+  deleteCompleted: () => void;
+}
+
+export interface IThemeContextProps {
+  theme: boolean;
+  handleThemeColor: () => void;
+}
+
+export enum FILTER {
+  ALL = "All",
+  ACTIVE = "Active",
+  COMPLETED = "Completed",
 }

@@ -59,7 +59,15 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
     setTodos(editedTodos);
   };
 
-  const data = { todos, isLoading, addTodo, deleteTodo, completeTodo };
+  const deleteCompleted = () => {
+    const filterTodos = todos.filter((todo) => todo.completed === true);
+
+    filterTodos.forEach((todo) => {
+      return deleteTodo(todo.id);
+    });
+  };
+
+  const data = { todos, isLoading, addTodo, deleteTodo, completeTodo, deleteCompleted };
 
   return <TodoContext.Provider value={data}>{children}</TodoContext.Provider>;
 };
