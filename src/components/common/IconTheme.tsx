@@ -8,7 +8,7 @@ const IconTheme = () => {
   return (
     <div
       onClick={handleThemeColor}
-      className="flex items-center justify-center w-[30px] bg-CheckOne cursor-pointer"
+      className="flex items-center justify-center w-[30px] cursor-pointer"
     >
       {theme ? (
         <img src={IMAGES.iconSun} alt="icon-sun" />

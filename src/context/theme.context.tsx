@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { IThemeContextProps } from "../interfaces/interface";
+import { IThemeContextProps, THEME } from "../interfaces/interface";
 
 type Props = {
   children: React.ReactNode;
@@ -8,10 +8,16 @@ type Props = {
 export const ThemeContext = createContext({} as IThemeContextProps);
 
 export const ThemeContextProvider: React.FC<Props> = ({ children }) => {
-  const [theme, setTheme] = useState<boolean>(false);
+  const [theme, setTheme] = useState<THEME>(THEME.LIGHT);
 
   const handleThemeColor = () => {
-    setTheme((prevState) => !prevState);
+    setTheme((prevState) => {
+      if (prevState === THEME.LIGHT) {
+        return THEME.DARK;
+      } else {
+        return THEME.LIGHT;
+      }
+    });
   };
 
   const data = { theme, handleThemeColor };

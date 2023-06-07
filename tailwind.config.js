@@ -22,6 +22,7 @@ export default {
       VDGrayishBlueTwo: "#2D3254",
       VDGrayishBlueThree: "#3C4151",
     },
+
     fontFamily: {
       sans: ["Josefin Sans", "sans-serif"],
     },
@@ -32,10 +33,19 @@ export default {
       large: 22,
       xLarge: 26,
     },
+
     fontWeight: {
       400: 400,
       700: 700,
     },
+
+    backgroundImage: {
+      mobile_dark: "url('/src/assets/bg-mobile-dark.jpg')",
+      mobile_light: "url('/src/assets/bg-mobile-light.jpg')",
+      desktop_dark: "url('/src/assets/bg-desktop-dark.jpg')",
+      desktop_light: "url('/src/assets/bg-desktop-light.jpg')",
+    },
+
     extend: {},
   },
   plugins: [],

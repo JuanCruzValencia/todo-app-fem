@@ -13,23 +13,27 @@ const MainContainer = () => {
     useContext(TodoContext);
 
   return (
-    <>
+    <div className="flex flex-col w-full items-center justify-center gap-8">
       <div className="flex w-full max-w-[400px] items-center justify-between">
-        <h1 className="uppercase">todo</h1>
+        <h1
+          className={`uppercase text-xLarge font-700 tracking-widest text-[#ffffff]`}
+        >
+          todo
+        </h1>
         <IconTheme />
       </div>
-      <div>
-        <Form />
-      </div>
+      <Form />
       <div>
         {isLoading ? <Loading /> : <ListFlexContainer todos={filteredTodos} />}
       </div>
       <div className="flex">
         <ItemCounter count={filteredTodos.length} />
-        <TodoFilter current={filter} onChange={handleFilter} />
         <ClearBtn />
       </div>
-    </>
+      <div className="flex">
+        <TodoFilter current={filter} onChange={handleFilter} />
+      </div>
+    </div>
   );
 };
 

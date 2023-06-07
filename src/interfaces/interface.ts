@@ -20,7 +20,7 @@ export interface ITodoContextProps {
 }
 
 export interface IThemeContextProps {
-  theme: boolean;
+  theme: THEME;
   handleThemeColor: () => void;
 }
 
@@ -28,4 +28,9 @@ export enum FILTER {
   ALL = "All",
   ACTIVE = "Active",
   COMPLETED = "Completed",
+}
+
+export enum THEME {
+  LIGHT = "light",
+  DARK = "dark",
 }
