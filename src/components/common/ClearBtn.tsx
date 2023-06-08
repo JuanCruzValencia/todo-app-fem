@@ -7,7 +7,7 @@ const ClearBtn = () => {
 
   return (
     <Button
-      className=""
+      className="capitalize"
       text="clear completed"
       handleClick={() => deleteCompleted}
     />

@@ -23,10 +23,6 @@ export default {
       VDGrayishBlueThree: "#3C4151",
     },
 
-    fontFamily: {
-      sans: ["Josefin Sans", "sans-serif"],
-    },
-
     fontSize: {
       small: 14,
       normal: 18,
