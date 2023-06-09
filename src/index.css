@@ -3,5 +3,6 @@
 @tailwind utilities;
 
 html {
-    font-weight: 700;
+  font-weight: 700;
+  font-family: "Josefin Sans", sans-serif;
 }

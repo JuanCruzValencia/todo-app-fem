@@ -15,11 +15,11 @@ const TodoFilter: React.FC<Props> = ({ current, onChange }) => {
           <div
             key={filter}
             onClick={() => onChange(filter)}
-            className={
+            className={`${
               current === filter
                 ? "text-CheckOne cursor-pointer"
-                : "text-CheckTwo cursor-pointer"
-            }
+                : "text-DDGrayBlue cursor-pointer"
+            }`}
           >
             {filter}
           </div>

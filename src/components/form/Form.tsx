@@ -16,7 +16,7 @@ const Form: React.FC = () => {
     <form
       onSubmit={handleSubmmit}
       className={`flex w-full gap-3 p-4 rounded ${
-        theme === THEME.LIGHT ? "bg-LGray" : "bg-VDGrayishBlueThree"
+        theme === THEME.LIGHT ? "bg-white" : "bg-VDGrayishBlueThree"
       }`}
     >
       <IconCheck completed={false} />
@@ -27,7 +27,7 @@ const Form: React.FC = () => {
         required={true}
         error={errors}
         className={`outline-0	${
-          theme === THEME.LIGHT ? "bg-LGray" : "bg-VDGrayishBlueThree"
+          theme === THEME.LIGHT ? "bg-white" : "bg-VDGrayishBlueThree"
         }`}
         handleChange={handleChange}
       />

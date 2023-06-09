@@ -7,6 +7,7 @@ export default {
       BBlue: "#0077FF",
       CheckOne: "#3291FF",
       CheckTwo: "#EF4DB6",
+      white: "#FFFFFF",
       //light
       LGray: "#FAFAFA",
       VLGrayBlue: "#EDEFF6",
