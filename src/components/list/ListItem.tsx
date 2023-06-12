@@ -4,28 +4,24 @@ import { TodoContext } from "../../context/todo.context";
 import { ThemeContext } from "../../context/theme.context";
 import IconCheck from "../common/IconCheck";
 import IconCross from "../common/IconCross";
+import useDragEvent from "../../hooks/useDrag";
 
 type Props = {
   todo: ITodo;
-  handleDragging: (dragging: boolean) => void;
+  index: number;
 };
 
-const ListItem: React.FC<Props> = ({ todo, handleDragging }) => {
+const ListItem: React.FC<Props> = ({ todo, index }) => {
   const { completeTodo, deleteTodo } = useContext(TodoContext);
+  const { dragEnd, dragStart, dropItemHandler } = useDragEvent();
   const { theme } = useContext(ThemeContext);
-
-  const handleDragStart = (event: React.DragEvent<HTMLDivElement>) => {
-    event.dataTransfer.setData("number", `${todo.id}`);
-    handleDragging(true);
-  };
-
-  const handleDragEnd = () => handleDragging(false);
 
   return (
     <div
       draggable
-      onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
+      onDragStart={(e) => dragStart(e, index)}
+      onDragEnter={(e) => dragEnd(e, index)}
+      onDragEnd={dropItemHandler}
       className={`flex w-full justify-between gap-3 p-4 rounded ${
         theme === THEME.LIGHT ? "bg-white" : "bg-VDGrayishBlueThree"
       }`}

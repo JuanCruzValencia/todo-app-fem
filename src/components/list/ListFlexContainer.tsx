@@ -3,21 +3,13 @@ import { ITodo } from "../../interfaces/interface";
 
 type Props = {
   todos: ITodo[];
-  isDragging: boolean;
-  handleDragging: (dragging: boolean) => void;
 };
 
-const ListFlexContainer: React.FC<Props> = ({
-  todos,
-  isDragging,
-  handleDragging,
-}) => {
+const ListFlexContainer: React.FC<Props> = ({ todos }) => {
   return (
     <>
-      {todos.map((todo) => {
-        return (
-          <ListItem todo={todo} key={todo.id} handleDragging={handleDragging} />
-        );
+      {todos.map((todo, index) => {
+        return <ListItem todo={todo} key={index} index={index} />;
       })}
     </>
   );
