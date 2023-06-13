@@ -11,15 +11,11 @@ import {
   Loading,
   TodoFilter,
 } from "../common";
-import useDragEvent from "../../hooks/useDrag";
 
 const MainContainer = () => {
   const { filteredTodos, isLoading, handleFilter, filter } =
     useContext(TodoContext);
   const { theme } = useContext(ThemeContext);
-  const { todos } = useDragEvent();
-
-  console.log(filteredTodos);
 
   return (
     <div className="flex flex-col w-full items-center justify-center gap-4">
@@ -33,7 +29,7 @@ const MainContainer = () => {
       </div>
       <Form />
       <div className="w-full flex flex-col items-center justify-center text-small">
-        {isLoading ? <Loading /> : <ListFlexContainer todos={todos} />}
+        {isLoading ? <Loading /> : <ListFlexContainer todos={filteredTodos} />}
         <div
           className={`flex w-full gap-3 p-4 rounded justify-between text-small text-DDGrayBlue ${
             theme === THEME.LIGHT ? "bg-white" : "bg-VDGrayishBlueThree"

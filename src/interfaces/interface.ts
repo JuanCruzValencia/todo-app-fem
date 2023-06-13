@@ -17,6 +17,9 @@ export interface ITodoContextProps {
   deleteTodo: (id: number) => void;
   completeTodo: (id: number) => void;
   deleteCompleted: () => void;
+  dragTodoStart: (e: React.DragEvent<HTMLDivElement>, position: number) => void;
+  dragTodoEnd: (e: React.DragEvent<HTMLDivElement>, position: number) => void;
+  dropTodoHandler: () => void;
 }
 
 export interface IThemeContextProps {

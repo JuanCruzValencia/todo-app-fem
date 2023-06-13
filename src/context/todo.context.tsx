@@ -1,4 +1,4 @@
-import { createContext, useEffect, useMemo, useState } from "react";
+import { createContext, useEffect, useMemo, useRef, useState } from "react";
 import { FILTER, ITodo, ITodoContextProps } from "../interfaces/interface";
 import { listRequest } from "../api/request";
 
@@ -12,6 +12,8 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
   const [todos, setTodos] = useState<ITodo[]>([]);
   const [filter, setFilter] = useState<FILTER>(FILTER.ALL);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const dragTodo = useRef<number | null>(null);
+  const dropTodo = useRef<number | null>(null);
 
   useEffect(() => {
     const fetchList = async () => {
@@ -61,8 +63,6 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
 
       setTodos(filterTodos);
     }
-
-    // throw new Error("Todo not found");
   };
 
   const completeTodo = (id: number) => {
@@ -85,6 +85,37 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
     });
   };
 
+  const dragTodoStart = (
+    e: React.DragEvent<HTMLDivElement>,
+    position: number
+  ) => {
+    dragTodo.current = position;
+    const data = e.target as HTMLElement;
+    console.log(data.innerHTML);
+  };
+
+  const dragTodoEnd = (
+    e: React.DragEvent<HTMLDivElement>,
+    position: number
+  ) => {
+    dropTodo.current = position;
+    const data = e.target as HTMLElement;
+    console.log(data.innerHTML);
+  };
+
+  const dropTodoHandler = () => {
+    const copyListItems = [...filteredTodos];
+
+    if (dragTodo.current === null || dropTodo.current === null) return;
+
+    const dragItemContent = copyListItems[dragTodo.current];
+    copyListItems.splice(dragTodo.current, 1);
+    copyListItems.splice(dropTodo.current, 0, dragItemContent);
+    dragTodo.current = null;
+    dropTodo.current = null;
+    setTodos(copyListItems);
+  };
+
   const data = {
     filteredTodos,
     isLoading,
@@ -94,6 +125,9 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
     deleteTodo,
     completeTodo,
     deleteCompleted,
+    dragTodoStart,
+    dragTodoEnd,
+    dropTodoHandler,
   };
 
   return <TodoContext.Provider value={data}>{children}</TodoContext.Provider>;
