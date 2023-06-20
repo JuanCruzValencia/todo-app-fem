@@ -34,6 +34,8 @@ const useForm = ({ initialValue }: FormProps) => {
     setErrors(newError);
 
     addTodo(form.todo);
+
+    setForm({});
   };
 
   return {
