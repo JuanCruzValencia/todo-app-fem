@@ -11,7 +11,13 @@ type Props = {
 };
 
 const ListItem: React.FC<Props> = ({ todo, index }) => {
-  const { completeTodo, deleteTodo, dragTodoEnd, dragTodoStart, dropTodoHandler } = useContext(TodoContext);
+  const {
+    completeTodo,
+    deleteTodo,
+    dragTodoEnd,
+    dragTodoStart,
+    dropTodoHandler,
+  } = useContext(TodoContext);
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -20,7 +26,7 @@ const ListItem: React.FC<Props> = ({ todo, index }) => {
       onDragStart={(e) => dragTodoStart(e, index)}
       onDragEnter={(e) => dragTodoEnd(e, index)}
       onDragEnd={dropTodoHandler}
-      className={`flex w-full justify-between gap-3 p-4 rounded ${
+      className={`flex w-full justify-between items-center gap-3 p-4 rounded ${
         theme === THEME.LIGHT ? "bg-white" : "bg-VDGrayishBlueThree"
       }`}
     >
@@ -28,11 +34,9 @@ const ListItem: React.FC<Props> = ({ todo, index }) => {
         <IconCheck completed={todo.completed} />
         <p
           onClick={() => completeTodo(todo.id)}
-          className={
-            todo.completed
-              ? "line-through text-DDGrayBlue cursor-pointer"
-              : "text-DGrayBlue cursor-pointer"
-          }
+          className={`p-1 text-DDGrayBlue cursor-pointer
+            ${todo.completed && "line-through"}
+          `}
         >
           {todo.content}
         </p>

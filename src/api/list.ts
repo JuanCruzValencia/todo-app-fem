@@ -15,26 +15,6 @@ export const TodoList = {
             content: "Nota 2",
             completed: false,
           },
-          {
-            id: 3,
-            content: "Nota 3",
-            completed: false,
-          },
-          {
-            id: 4,
-            content: "Nota 4",
-            completed: false,
-          },
-          {
-            id: 5,
-            content: "Nota 5",
-            completed: false,
-          },
-          {
-            id: 6,
-            content: "Nota 6",
-            completed: false,
-          },
         ]);
       }, 2000);
     }),

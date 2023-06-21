@@ -59,9 +59,9 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
     const findTodo = todos.find((todo) => todo.id === id);
 
     if (findTodo) {
-      const filterTodos = todos.filter((todo) => todo.id !== id);
+      const filteredTodos = todos.filter((todo) => todo.id !== id);
 
-      setTodos(filterTodos);
+      setTodos(filteredTodos);
     }
   };
 
@@ -70,7 +70,6 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
       if (todo.id === id) {
         todo.completed = !todo.completed;
       }
-
       return todo;
     });
 
@@ -78,11 +77,9 @@ export const TodoContextProvider: React.FC<Props> = ({ children }) => {
   };
 
   const deleteCompleted = () => {
-    const filterTodos = todos.filter((todo) => todo.completed === true);
+    const filteredTodos = todos.filter((todo) => !todo.completed);
 
-    filterTodos.forEach((todo) => {
-      return deleteTodo(todo.id);
-    });
+    setTodos(filteredTodos);
   };
 
   const dragTodoStart = (

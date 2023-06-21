@@ -9,7 +9,9 @@ const Form: React.FC = () => {
   const initialValue = {
     todo: "",
   };
-  const { errors, handleChange, handleSubmmit } = useForm({ initialValue });
+  const { errors, handleChange, handleSubmmit } = useForm({
+    initialValue,
+  });
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -24,7 +26,7 @@ const Form: React.FC = () => {
         type="string"
         name="todo"
         placeholder="Create new todo..."
-        required={true}
+        required={false}
         error={errors}
         className={`outline-0	${
           theme === THEME.LIGHT ? "bg-white" : "bg-VDGrayishBlueThree"

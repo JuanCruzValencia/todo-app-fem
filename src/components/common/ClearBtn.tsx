@@ -9,7 +9,7 @@ const ClearBtn = () => {
     <Button
       className="capitalize"
       text="clear completed"
-      handleClick={() => deleteCompleted}
+      handleClick={deleteCompleted}
     />
   );
 };

@@ -32,15 +32,16 @@ const useForm = ({ initialValue }: FormProps) => {
     }
 
     setErrors(newError);
-
+    
     addTodo(form.todo);
 
-    setForm({});
+    e.currentTarget.reset();
   };
 
   return {
     handleChange,
     handleSubmmit,
+
     errors,
   };
 };

@@ -5,16 +5,14 @@ type Props = {
 };
 
 const IconCheck: React.FC<Props> = ({ completed }) => {
-  if (completed) {
-    return (
-      <div className="flex items-center justify-center w-[25px] border border-lGrayBlue rounded-full bg-gradient-to-b from-CheckOne to-CheckTwo">
-        <img src={IMAGES.iconCheck} alt="icon-check" />
-      </div>
-    );
-  }
-
   return (
-    <div className="w-[25px] h-[25px] border border-lGrayBlue rounded-full hover:border-CheckOne cursor-pointer"></div>
+    <div
+      className={`flex items-center justify-center w-[25px] h-[25px] border border-lGrayBlue rounded-full ${
+        completed && "bg-BBlue"
+      } hover:border-CheckOne cursor-pointer`}
+    >
+      {completed && <img src={IMAGES.iconCheck} alt="icon-check" />}
+    </div>
   );
 };
 
