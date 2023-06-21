@@ -1,4 +1,4 @@
-# Challenge one - Todo App 
+# Challenge - Todo App 
 
 Link to live version - [Todo App](https://juancruzvalencia.github.io/todo-app-fem/)
 
