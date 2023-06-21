@@ -7,12 +7,12 @@ export const TodoList = {
         resolve([
           {
             id: 1,
-            content: "Nota 1",
+            content: "Test note 1: Should fix some styles...",
             completed: true,
           },
           {
             id: 2,
-            content: "Nota 2",
+            content: "Test Nota 2: Click me if you like it :)",
             completed: false,
           },
         ]);
